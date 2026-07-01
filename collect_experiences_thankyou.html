@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>קיבלנו — ערב מבוא · The Bidder × Mustang</title>
+<meta name="description" content="קיבלנו את הרשמתכם לערב המבוא של טיול האספנים. יום ראשון 12.7.2026.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;600;700;900&family=Suez+One&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#b98a1c;--gold-light:#f2ca82;--cream:#e6dcc6;--blue:#5a9ab8;--font-d:'Suez One',Georgia,serif;--font-b:'Noto Serif Hebrew',Georgia,serif;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:linear-gradient(180deg,#060f1a,#0d1e2e 60%,#05101b);color:var(--cream);font-family:var(--font-b);direction:rtl;min-height:100vh;-webkit-font-smoothing:antialiased;display:flex;align-items:center;justify-content:center;padding:28px 20px}
+.card{max-width:520px;width:100%;text-align:center;background:rgba(5,16,27,0.5);border:1px solid rgba(185,138,28,0.22);border-radius:16px;padding:40px 30px 34px;box-shadow:0 22px 60px rgba(0,0,0,0.45)}
+.logo{height:44px;width:auto;margin:0 auto 22px;display:block}
+.check{width:70px;height:70px;border-radius:50%;border:2px solid var(--gold-light);margin:0 auto 22px;display:flex;align-items:center;justify-content:center;font-size:36px;color:var(--gold-light);box-shadow:0 0 40px rgba(242,202,130,0.2)}
+h1{font-family:var(--font-d);font-weight:400;font-size:clamp(30px,7vw,42px);color:var(--gold-light);text-shadow:0 0 50px rgba(242,202,130,0.2);margin-bottom:14px}
+.sub{font-size:18px;line-height:1.7;color:var(--cream);margin-bottom:22px}
+.details{background:rgba(185,138,28,0.08);border:1px solid rgba(185,138,28,0.22);border-radius:12px;padding:20px 22px;margin:0 auto 8px;max-width:420px}
+.when{font-family:var(--font-d);font-size:18px;color:var(--gold-light);margin-bottom:6px}
+.when .ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.place{font-size:15px;color:var(--cream);margin-bottom:12px}
+.sched{list-style:none;padding:0;margin:0}
+.sched li{padding:4px 0;font-size:14.5px;color:var(--cream)}
+.sched li b{color:var(--gold-light);direction:ltr;unicode-bidi:isolate;display:inline-block;margin-left:8px}
+.note{font-size:12.5px;color:#8a96a0;margin-top:12px}
+.mustang{margin-top:22px;font-size:13px;letter-spacing:2px;color:var(--gold)}
+.mustang img{height:26px;vertical-align:middle;margin-right:6px}
+[data-mode]{display:none}
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="logo" src="https://aspical-omnical.github.io/tb-mailer-assets/reeng_logo2.png" alt="The Bidder Auctions">
+    <div class="check">✓</div>
+
+    <!-- IN-PERSON -->
+    <div data-mode="live">
+      <h1>שמרנו לכם מקום</h1>
+      <p class="sub">קיבלנו — ונתראה אצלנו בגן יבנה. הכנו לכם קפה ועוגה.</p>
+      <div class="details">
+        <div class="when">יום ראשון · <span class="ltr">12.7.2026</span> · החל מ‑<span class="ltr">19:00</span></div>
+        <div class="place">תמר 7, גן יבנה</div>
+        <ul class="sched">
+          <li><b>19:00</b> התכנסות וקפה</li>
+          <li><b>19:30</b> הצגת מסלול הטיול</li>
+          <li><b>20:15</b> דגשים ומענה לשאלות</li>
+        </ul>
+        <p class="note">* נא להחנות ברחוב הסמוך. נשלח תזכורת לקראת הערב.</p>
+      </div>
+    </div>
+
+    <!-- ZOOM -->
+    <div data-mode="zoom">
+      <h1>אתם בפנים</h1>
+      <p class="sub">קיבלנו — נצטרף אליכם הביתה. <b>קישור הזום ופרטי הערב בדרך למייל שלכם.</b></p>
+      <div class="details">
+        <div class="when">יום ראשון · <span class="ltr">12.7.2026</span> · החל מ‑<span class="ltr">19:00</span></div>
+        <div class="place">בזום — מכל מקום שנוח לכם</div>
+        <p class="note">נשלח לכם את הקישור ותזכורת לקראת הערב. נתראה במסך.</p>
+      </div>
+    </div>
+
+    <!-- FALLBACK (no mode) -->
+    <div data-mode="default">
+      <h1>קיבלנו!</h1>
+      <p class="sub">רשמנו אתכם לערב המבוא — נשלח את כל הפרטים למייל. נתראה ב‑<span style="direction:ltr;unicode-bidi:isolate;display:inline-block">12.7</span>.</p>
+    </div>
+
+    <div class="mustang">
+      בשיתוף החבר'ה מ‑Mustang
+      <img src="https://aspical-omnical.github.io/tb-mailer-assets/mustang_clean.png" alt="Mustang">
+    </div>
+  </div>
+
+<script>
+(function(){
+  var m=(new URLSearchParams(location.search)).get('mode');
+  var key = (m==='live'||m==='zoom') ? m : 'default';
+  var el=document.querySelector('[data-mode="'+key+'"]');
+  if(el) el.style.display='block';
+})();
+</script>
+</body>
+</html>
