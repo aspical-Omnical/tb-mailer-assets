@@ -81,7 +81,7 @@
          in the Zoom — say the priority out loud, it's the whole reason the hold exists. -->
     <div style="display:inline-block;margin-top:12px;font-size:13.5px;font-weight:700;color:var(--gold);
       border:1px solid rgba(201,162,39,.45);border-radius:20px;padding:5px 14px">
-      ⭐ כמשתתפי הזום — לכם יש קדימות על כל מי שלא היה
+      ⭐ כמשתתפי הזום — יש לכם זכות ראשונים על מקום בטיול
     </div>
   </header>
 
@@ -94,11 +94,13 @@
       השריון הוא <b>ללא תשלום וללא התחייבות</b>. הוא פשוט מחזיק לכם את המקום בקבוצה
       בזמן שאתם מחליטים, כדי שלא תפסידו אותו למישהו שהחליט מהר יותר.
     </div>
-    <div class="cap" id="cap">הקבוצה מוגבלת ל-20 משתתפים</div>
+    <!-- (Asaf 2026-08-01: no seat-count scarcity here — "you can't both say we have only 20
+         places and tell people they have priority." The hold deadline is the only clock.) -->
+    <div class="cap" id="cap">קבוצה קטנה ואינטימית — בכוונה</div>
 
     <h2>מה קורה עכשיו</h2>
     <ol class="steps">
-      <li>אנחנו שומרים את המקום עד המועד שלמעלה.</li>
+      <li>המקום שלכם שמור ל-72 שעות.</li>
       <li>אם יש שאלה פתוחה — נוי חוזר אליכם בשיחה קצרה, בתיאום מראש.</li>
       <li>מחליטים להצטרף? מאשרים, ואנחנו שולחים את פרטי ההרשמה.</li>
       <li>מחליטים שלא? אומרים מילה, והמקום משוחרר לבא בתור. בלי אי-נעימות.</li>
@@ -112,17 +114,30 @@
     <li>אפשר להצטרף כזוג או לבד.</li>
   </ul>
 
-  <a class="cta" id="confirm" href="#">לאשר את ההצטרפות</a>
-  <a class="cta sec" id="release" href="#">לא הפעם — לשחרר את המקום</a>
+  <!-- (Asaf 2026-08-01: "clicking the cta must lead to gmail... It should give both options" —
+       a bare mailto: is hijacked by whatever the system default is (Outlook on many machines);
+       primary = Gmail web compose, the small line beneath = the default mail client.) -->
+  <!-- ONE action (Asaf 2026-08-01: "just have a press this click and noy will contact you in a
+       couple of days"). The four Gmail/Outlook links before this were three hops deep for someone
+       who arrived from a WhatsApp thread.
+       It has to land SOMEWHERE — a static page cannot record a click — and WhatsApp is where Noy
+       already works, so the message arrives in the same inbox he is already answering. One tap,
+       nothing to type. Email stays as a small line for anyone without WhatsApp. -->
+  <a class="cta" id="cta" href="#" target="_blank" rel="noopener">מעוניינים? לחצו כאן ונחזור אליכם</a>
+  <a href="#" id="cta-mail" style="display:block;text-align:center;font-size:13px;opacity:.6;margin-top:9px;color:var(--fg)">אין לכם וואטסאפ? אפשר גם במייל</a>
 
   <div class="fine">
-    לא בטוחים עדיין? זה בסדר — פשוט אל תעשו כלום, והשריון יפוג מעצמו במועד שלמעלה.
+    לוחצים פעם אחת — ונוי חוזר אליכם באופן אישי תוך יום-יומיים.<br>
+    לא בטוחים עדיין? זה בסדר — פשוט אל תעשו כלום, והשריון יפוג מעצמו.
     אין קנס, אין תזכורות רודפות.
   </div>
 
   <div class="foot">
-    <img src="https://aspical-omnical.github.io/tb-mailer-assets/m3_logo_footer_v9.png"
-         alt="The Bidder" style="max-width:140px;width:50%;height:auto;margin:0 auto 10px;display:block;opacity:.9">
+    <!-- Same glow plate as the header, just smaller. m3_logo_footer_v9 is a flat pill with no
+         bloom and read as a different mark sitting on the same dark ground. Full opacity — the
+         glow is baked into the PNG, so dimming it kills the very thing that makes it match. -->
+    <img src="https://aspical-omnical.github.io/tb-mailer-assets/m3_logo_classic_glow_v21.png"
+         alt="The Bidder" style="max-width:140px;width:50%;height:auto;margin:0 auto 10px;display:block">
     The Bidder · גלריה ובית מכירות פומביות<br>
     <span dir="ltr">gallery@thebidderauction.com</span>
   </div>
@@ -142,22 +157,27 @@
   // No date => neutral copy. Never print an empty "עד" or a placeholder.
   document.getElementById('until').textContent = until ? '· שמור עד ' + until : '· שמור לזמן מוגבל';
 
-  if(places && /^\d+$/.test(places)){
-    document.getElementById('cap').textContent =
-      'נותרו ' + places + ' מקומות מתוך 20';
-  }
+  // (Asaf 2026-08-01: no numeric scarcity on this page — priority + hold deadline only.
+  //  The ?places= param is deliberately ignored.)
 
-  // CTA -> WhatsApp to Noy (Asaf 2026-08-01). These people arrive FROM a WhatsApp thread with
-  // Noy — answering him there is zero friction; a mailto on a phone is a detour. The prefilled
-  // text carries the name so the reply is self-identifying even from an unsaved number.
-  var wa = function(x){
-    return 'https://wa.me/972545249131?text=' +
-           encodeURIComponent(x + (name ? ' — ' + name : ''));
-  };
-  document.getElementById('confirm').href =
-    wa('אני מאשר/ת את ההצטרפות לטיול מרכז אירופה 24–28.9 🎉');
-  document.getElementById('release').href =
-    wa('לא נצטרף הפעם לטיול — אפשר לשחרר את המקום.');
+  // ONE action, one destination. A static page cannot record a click, so the press has to carry
+  // itself somewhere — and WhatsApp is the one place Noy is already reading. The message is
+  // pre-written so the visitor types nothing; they only hit send.
+  // Not wa.me: on Windows that hands off to the desktop app. web.whatsapp.com/send works in the
+  // browser, and on phones WhatsApp still intercepts it — so one link serves both.
+  var NOY = '972545249131';
+  var hi = 'היי נוי, ראיתי את דף שריון המקום לטיול למרכז אירופה' +
+           (name ? ' (על שם ' + name + ')' : '') + '. אשמח שתחזור אליי.';
+  document.getElementById('cta').href =
+    'https://web.whatsapp.com/send?phone=' + NOY + '&text=' + encodeURIComponent(hi);
+
+  // Email fallback for anyone without WhatsApp. Gmail's web composer rather than a bare mailto:,
+  // which the OS default (often Outlook) hijacks.
+  var TO = 'gallery@thebidderauction.com';
+  var subj = encodeURIComponent('טיול מרכז אירופה — נא לחזור אליי' + (name ? ' — ' + name : ''));
+  var body = encodeURIComponent(hi + '\n\n(נשלח מדף שריון המקום)');
+  document.getElementById('cta-mail').href =
+    'https://mail.google.com/mail/?view=cm&fs=1&to=' + TO + '&su=' + subj + '&body=' + body;
 })();
 </script>
 </body>
