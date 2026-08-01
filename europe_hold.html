@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>שריון מקום — טיול האספנות למרכז אירופה</title>
+<title>זכות ראשונים — טיול האספנות למרכז אירופה</title>
 <!--
   The place-hold page. Linked from the "בפנים" confirmation message after the Zoom evening.
 
@@ -72,7 +72,7 @@
     <img src="https://aspical-omnical.github.io/tb-mailer-assets/m3_logo_classic_glow_v21.png"
          alt="The Bidder" style="max-width:170px;width:60%;height:auto;margin:0 auto 6px;display:block">
     <div class="kicker">The Bidder · טיולי אספנות</div>
-    <h1 id="hd">המקום שלכם שמור</h1>
+    <h1 id="hd">יש לכם זכות ראשונים</h1>
     <!-- A numeric RANGE inside RTL text renders reversed ("28.9.2026–24") unless it is isolated:
          the bidi algorithm reorders the run. dir="ltr" on its own span pins it. Same trap the
          mailers hit with ltr() spans — never write a date range as bare text in this project. -->
@@ -81,18 +81,18 @@
          in the Zoom — say the priority out loud, it's the whole reason the hold exists. -->
     <div style="display:inline-block;margin-top:12px;font-size:13.5px;font-weight:700;color:var(--gold);
       border:1px solid rgba(201,162,39,.45);border-radius:20px;padding:5px 14px">
-      ⭐ כמשתתפי הזום — יש לכם זכות ראשונים על מקום בטיול
+      ⭐ הייתם בזום — יש לכם זכות ראשונים מול מי שלא היה
     </div>
   </header>
 
   <div class="card">
     <div class="held">
-      <b id="who">שריון מקום</b>
+      <b id="who">זכות ראשונים</b>
       <span class="until" id="until"></span>
     </div>
     <div style="font-size:14.5px;line-height:1.7;color:var(--ink-soft)">
-      השריון הוא <b>ללא תשלום וללא התחייבות</b>. הוא פשוט מחזיק לכם את המקום בקבוצה
-      בזמן שאתם מחליטים, כדי שלא תפסידו אותו למישהו שהחליט מהר יותר.
+      זה <b>ללא תשלום וללא התחייבות</b>. המשמעות פשוטה:
+      מי שהיה בזום נכנס <b>לפני</b> מי שלא היה — ובין הנוכחים עצמם, <b>כל הקודם זוכה</b>.
     </div>
     <!-- (Asaf 2026-08-01: no seat-count scarcity here — "you can't both say we have only 20
          places and tell people they have priority." The hold deadline is the only clock.) -->
@@ -100,10 +100,10 @@
 
     <h2>מה קורה עכשיו</h2>
     <ol class="steps">
-      <li>המקום שלכם שמור ל-72 שעות.</li>
+      <li>זכות הראשונים שלכם תקפה ל-72 שעות.</li>
       <li>אם יש שאלה פתוחה — נוי חוזר אליכם בשיחה קצרה, בתיאום מראש.</li>
       <li>מחליטים להצטרף? מאשרים, ואנחנו שולחים את פרטי ההרשמה.</li>
-      <li>מחליטים שלא? אומרים מילה, והמקום משוחרר לבא בתור. בלי אי-נעימות.</li>
+      <li>מחליטים שלא? אומרים מילה ואנחנו עוברים הלאה. בלי אי-נעימות.</li>
     </ol>
   </div>
 
@@ -128,7 +128,7 @@
 
   <div class="fine">
     לוחצים פעם אחת — ונוי חוזר אליכם באופן אישי תוך יום-יומיים.<br>
-    לא בטוחים עדיין? זה בסדר — פשוט אל תעשו כלום, והשריון יפוג מעצמו.
+    לא בטוחים עדיין? זה בסדר — פשוט אל תעשו כלום, וזכות הראשונים תפוג מעצמה.
     אין קנס, אין תזכורות רודפות.
   </div>
 
@@ -151,11 +151,11 @@
   var places= (p.get('places')|| '').trim();
 
   if(name){
-    document.getElementById('hd').textContent  = name + ', המקום שלכם שמור';
-    document.getElementById('who').textContent = 'שריון על שם ' + name;
+    document.getElementById('hd').textContent  = name + ', יש לכם זכות ראשונים';
+    document.getElementById('who').textContent = 'זכות ראשונים על שם ' + name;
   }
   // No date => neutral copy. Never print an empty "עד" or a placeholder.
-  document.getElementById('until').textContent = until ? '· שמור עד ' + until : '· שמור לזמן מוגבל';
+  document.getElementById('until').textContent = until ? '· תקפה עד ' + until : '· תקפה ל-72 שעות';
 
   // (Asaf 2026-08-01: no numeric scarcity on this page — priority + hold deadline only.
   //  The ?places= param is deliberately ignored.)
@@ -166,7 +166,7 @@
   // Not wa.me: on Windows that hands off to the desktop app. web.whatsapp.com/send works in the
   // browser, and on phones WhatsApp still intercepts it — so one link serves both.
   var NOY = '972545249131';
-  var hi = 'היי נוי, ראיתי את דף שריון המקום לטיול למרכז אירופה' +
+  var hi = 'היי נוי, ראיתי את הדף על הטיול למרכז אירופה' +
            (name ? ' (על שם ' + name + ')' : '') + '. אשמח שתחזור אליי.';
   document.getElementById('cta').href =
     'https://web.whatsapp.com/send?phone=' + NOY + '&text=' + encodeURIComponent(hi);
@@ -175,7 +175,7 @@
   // which the OS default (often Outlook) hijacks.
   var TO = 'gallery@thebidderauction.com';
   var subj = encodeURIComponent('טיול מרכז אירופה — נא לחזור אליי' + (name ? ' — ' + name : ''));
-  var body = encodeURIComponent(hi + '\n\n(נשלח מדף שריון המקום)');
+  var body = encodeURIComponent(hi + '\n\n(נשלח מדף זכות הראשונים)');
   document.getElementById('cta-mail').href =
     'https://mail.google.com/mail/?view=cm&fs=1&to=' + TO + '&su=' + subj + '&body=' + body;
 })();
