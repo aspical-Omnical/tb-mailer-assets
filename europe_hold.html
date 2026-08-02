@@ -189,8 +189,11 @@
   // Not wa.me: on Windows that hands off to the desktop app. web.whatsapp.com/send works in the
   // browser, and on phones WhatsApp still intercepts it — so one link serves both.
   var NOY = '972545249131';
-  var hi = 'היי נוי, ראיתי את הדף על הטיול למרכז אירופה' +
-           (name ? ' (על שם ' + name + ')' : '') + '. אשמח שתחזור אליי.';
+  // States INTENT, not that they read a page (Asaf, 2.8). "I saw the page" tells Noy nothing he
+  // can act on; "I want to proceed" is the whole signal. Name appended only when the link carried
+  // ?name=, so the inbound is self-identifying without cross-referencing a phone number.
+  var hi = 'היי נוי, הייתי מעוניין להתקדם עם ההצטרפות לטיול. אשמח שתחזור אליי.' +
+           (name ? ' (' + name + ')' : '');
   document.getElementById('cta').href =
     'https://web.whatsapp.com/send?phone=' + NOY + '&text=' + encodeURIComponent(hi);
 
