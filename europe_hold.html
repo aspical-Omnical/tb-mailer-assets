@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>זכות ראשונים — טיול האספנות למרכז אירופה</title>
+<title>סוגרים את הרשימה — טיול האספנות למרכז אירופה</title>
 <!--
   The place-hold page. Linked from the "בפנים" confirmation message after the Zoom evening.
 
@@ -72,7 +72,7 @@
     <img src="https://aspical-omnical.github.io/tb-mailer-assets/m3_logo_classic_glow_v21.png"
          alt="The Bidder" style="max-width:170px;width:60%;height:auto;margin:0 auto 6px;display:block">
     <div class="kicker">The Bidder · טיולי אספנות</div>
-    <h1 id="hd">יש לכם זכות ראשונים</h1>
+    <h1 id="hd">סוגרים את הרשימה</h1>
     <!-- A numeric RANGE inside RTL text renders reversed ("28.9.2026–24") unless it is isolated:
          the bidi algorithm reorders the run. dir="ltr" on its own span pins it. Same trap the
          mailers hit with ltr() spans — never write a date range as bare text in this project. -->
@@ -174,7 +174,7 @@
   var places= (p.get('places')|| '').trim();
 
   if(name){
-    document.getElementById('hd').textContent  = name + ', יש לכם זכות ראשונים';
+    document.getElementById('hd').textContent  = name + ', סוגרים את הרשימה';
     document.getElementById('who').textContent = 'זכות ראשונים על שם ' + name;
   }
   // No date => neutral copy. Never print an empty "עד" or a placeholder.
