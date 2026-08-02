@@ -100,7 +100,7 @@
 
     <h2>מה קורה עכשיו</h2>
     <ol class="steps">
-      <li>זכות הראשונים שלכם תקפה ל-72 שעות.</li>
+      <li>זכות הראשונים שלכם תקפה ל-24 שעות — הרשימה נסגרת מחר.</li>
       <li>אם יש שאלה פתוחה — נוי חוזר אליכם בשיחה קצרה, בתיאום מראש.</li>
       <li>מחליטים להצטרף? מאשרים, ואנחנו שולחים את פרטי ההרשמה.</li>
       <li>מחליטים שלא? אומרים מילה ואנחנו עוברים הלאה. בלי אי-נעימות.</li>
@@ -155,7 +155,7 @@
     document.getElementById('who').textContent = 'זכות ראשונים על שם ' + name;
   }
   // No date => neutral copy. Never print an empty "עד" or a placeholder.
-  document.getElementById('until').textContent = until ? '· תקפה עד ' + until : '· תקפה ל-72 שעות';
+  document.getElementById('until').textContent = until ? '· תקפה עד ' + until : '· תקפה ל-24 שעות';
 
   // (Asaf 2026-08-01: no numeric scarcity on this page — priority + hold deadline only.
   //  The ?places= param is deliberately ignored.)
